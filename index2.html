@@ -9,24 +9,24 @@
 <body>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
+        
         $(document).ready(function () {
             $('#AddRows').on("click", function () {
                 if ($('#row').val()) {
-                    $('#DynamicAddRowCols tbody').append($("#DynamicAddRowCols tbody tr:last").clone());
-                    $('#DynamicAddRowCols tbody tr:last td:last').html($('#row').val());
+                    $('#DynamicAddRowCols tbody').append($("#DynamicAddRowCols tbody tr:first").clone());
+                    $('#DynamicAddRowCols tbody tr:last td:first').html($('#row').val());
                 }
                 else {
                     alert('Enter Text');
                 }
                 return false;
             });
+
+            
             $('#AddCol').on("click", function () {
                 if ($('#col').val()) {
-                    $('#DynamicAddRowCols tr').append($("<td>"));
+                    $('#DynamicAddRowCols tr').append($("<td>").clone());
                     $('#DynamicAddRowCols thead tr>td:last').html($('#col').val());
-                    $('#DynamicAddRowCols tbody tr').each(function () {
-                        $(this).children('td:last').append($('#colValue').val())
-                    });
                 }
                 else {
                     alert('Enter Text');
@@ -42,24 +42,20 @@
         <table border="1" id="DynamicAddRowCols">
             <thead>
                 <tr>
-                    <td>CustomerId</td>
-                    <td>Name</td>
-                    <td>Country</td>
+                    <td>Checklist</td>
+                    <td>Name</td>   
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>1</td>
-                    <td>Mudassar Khan</td>
-                    <td>India</td>
+                    <td>1</td>         
+                    <td><input type="checkbox"></td>
                 </tr>
             </tbody>
         </table>
-        <br /><br />
-        Rows Value <input id="row" /><br />
+        <input id="row" /><br />
         <button id="AddRows">Insert Row</button><br /><br />
         Column Name <input id="col" /><br />
-        Column Value <input id="colValue" /><br />
         <button id="AddCol">Insert Row</button>
     </div>  
 </body>
