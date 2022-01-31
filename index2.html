@@ -25,15 +25,18 @@
             
             $('#AddCol').on("click", function () {
                 if ($('#col').val()) {
-                    $('#DynamicAddRowCols tr').append($("<td>").clone());
+                    $('#DynamicAddRowCols tr').append($("td:last").clone());
                     $('#DynamicAddRowCols thead tr>td:last').html($('#col').val());
+                   // $('#row2').show();
                 }
                 else {
                     alert('Enter Text');
                 }
                 return false;
             });
- 
+            //$('#row1').hide();
+           // $('#row2').hide();
+          
         }); 
     </script>
 </head>
@@ -43,19 +46,19 @@
             <thead>
                 <tr>
                     <td>Checklist</td>
-                    <td>Name</td>   
+                    <td id="row2">Name</td>   
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>1</td>         
+                    <td id="row1">1</td>        
                     <td><input type="checkbox"></td>
                 </tr>
             </tbody>
         </table>
         <input id="row" /><br />
         <button id="AddRows">Insert Row</button><br /><br />
-        Column Name <input id="col" /><br />
+        <input id="col" /><br />
         <button id="AddCol">Insert Row</button>
     </div>  
 </body>
